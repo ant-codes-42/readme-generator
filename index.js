@@ -1,5 +1,7 @@
 // TODO: Include packages needed for this application
-import writeToFile from '/helper.js'
+import appendToReadme from './helper.js'
+import inquirerPrompt from './helper.js'
+
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -65,7 +67,8 @@ function writeToFile(fileName, data) {}
 // TODO: Create a function to initialize app
 // Loop through the questions array using the inquirerPrompt function
 function init() {
-
+    const [title, description, install, usage, contribution, test, license, githubUsername, emailAddress] = questions;
+    inquirerPrompt(title);
 }
 
 // Function call to initialize app
