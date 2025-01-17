@@ -1,6 +1,6 @@
 // TODO: Include packages needed for this application
 import writeToReadme from './write.js'
-import inquirerPrompt from './write.js'
+import inquirer from 'inquirer'
 
 
 // TODO: Create an array of questions for user input
@@ -65,8 +65,8 @@ const questions = [
 // Pass the questions array into the inquirer, send the result into the pre-formatted 'string' template
 // for the README. Write all of this to to the file in one go. Do not need the destructuring.
 function init() {
-    const [title, description, install, usage, contribution, test, license, githubUsername, emailAddress] = questions;
-    inquirerPrompt(questions);
+    inquirer.prompt(questions)
+    .then((response) => writeToReadme(response))
 }
 
 // Function call to initialize app

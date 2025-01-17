@@ -1,14 +1,7 @@
 import fs from 'fs'
-import inquirer from 'inquirer';
-
-// Function to answer any given prompt
-export function inquirerPrompt(prompt) {
-    inquirer.prompt(prompt)
-        .then((response) => writeToReadme('README.md', response));
-}
 
 const formatFilename = (data) => {
-    return `${data.name}.md`;
+    return `${data.title}.md`;
 }
 
 const formatDataAsString = (data) => {
