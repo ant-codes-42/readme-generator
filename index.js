@@ -42,6 +42,16 @@ const questions = [
         name: 'test'
     },
     {
+        message: 'Enter the repo GitHub username:',
+        type: 'input',
+        name: 'githubUsername'
+    },
+    {
+        message: 'Enter a contact email address:',
+        type: 'input',
+        name: 'emailAddress'
+    },
+    {
         message: 'Choose a license from the list:',
         type: 'list',
         choices: [
@@ -56,23 +66,48 @@ const questions = [
         ],
         name: 'license'
     },
-    {
-        message: 'Enter your GitHub username:',
-        type: 'input',
-        name: 'githubUsername'
-    },
-    {
-        message: 'Enter your email address:',
-        type: 'input',
-        name: 'emailAddress'
-    }
+
 ];
 
 // Init function kicks off inquirer and sends results to writeToReadme
 // NOTE: formatReadmeData contains large amounts of logic and is in scope of writeToReadme - see write.js
 function init() {
     inquirer.prompt(questions)
-    .then((response) => writeToReadme(response))
+        .then((answers) => {
+            if (answers.license !== 'none') {
+                return inquirer.prompt([
+                    {
+                        message: 'Please enter the copyright year:',
+                        type: 'input',
+                        name: 'year',
+                        // Validate function simulates a promise
+                        validate: function (value) {
+                            return new Promise((resolve, reject) => {
+                                setTimeout(() => {
+                                    // More checks could be implemented here, checking for 4 digits and making
+                                    // sure it is a number
+                                    if (value.length !== 4 || isNaN(value)) {
+                                        reject('Please enter a valid year.');
+                                    } else {
+                                        resolve(true);
+                                    }
+                                }, 1000);
+                            });
+                        }
+                    },
+                    {
+                        message: 'Please enter the copyright holder name:',
+                        type: 'input',
+                        name: 'copyName'
+                    }
+                ]).then((additionalAnswers) => {
+                    return { ...answers, ...additionalAnswers };
+                });
+            } else {
+                return answers;
+            }
+        })
+        .then(answers => writeToReadme(answers));
 }
 
 // Function call to initialize app
