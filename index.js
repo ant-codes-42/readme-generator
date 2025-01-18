@@ -16,6 +16,12 @@ const questions = [
         name: 'description'
     },
     {
+        message: 'Include a Table of Contents?',
+        type: 'confirm',
+        default: 'true',
+        name: 'toc'
+    },
+    {
         message: 'Enter the installation instructions:',
         type: 'editor',
         name: 'install'
@@ -65,6 +71,7 @@ const questions = [
 // Pass the questions array into the inquirer, send the result into the pre-formatted 'string' template
 // for the README. Write all of this to to the file in one go. Do not need the destructuring.
 function init() {
+    const [title, description, install, usage, contribution, test, license, githubUsername, emailAddress] = questions;
     inquirer.prompt(questions)
     .then((response) => writeToReadme(response))
 }
