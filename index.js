@@ -1,9 +1,9 @@
-// TODO: Include packages needed for this application
+// Import required packages
 import writeToReadme from './write.js'
 import inquirer from 'inquirer'
 
 
-// TODO: Create an array of questions for user input
+// Create an array of questions for user input
 const questions = [
     {
         message: 'Enter the project title:',
@@ -51,7 +51,8 @@ const questions = [
             { name: 'BSD 2-Clause "Simplified" License', value: 'BSD2' },
             { name: 'BSD 3-Clause "New" or "Revised" License', value: 'BSD3' },
             { name: 'Boost Software License 1.0', value: 'boost' },
-            { name: 'Creative Commons Zero v1.0 Universal', value: 'ccz' }
+            { name: 'Creative Commons Zero v1.0 Universal', value: 'ccz' },
+            { name: 'None', value: 'none' }
         ],
         name: 'license'
     },
@@ -63,15 +64,13 @@ const questions = [
     {
         message: 'Enter your email address:',
         type: 'input',
-        name: 'emailAdress'
+        name: 'emailAddress'
     }
 ];
 
-// TODO: Create a function to initialize app
-// Pass the questions array into the inquirer, send the result into the pre-formatted 'string' template
-// for the README. Write all of this to to the file in one go. Do not need the destructuring.
+// Init function kicks off inquirer and sends results to writeToReadme
+// NOTE: formatReadmeData contains large amounts of logic and is in scope of writeToReadme - see write.js
 function init() {
-    const [title, description, install, usage, contribution, test, license, githubUsername, emailAddress] = questions;
     inquirer.prompt(questions)
     .then((response) => writeToReadme(response))
 }
