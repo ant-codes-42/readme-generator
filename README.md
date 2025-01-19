@@ -27,6 +27,8 @@ This is a simple application that generates README files within the terminal. It
 
 ## Usage
 
+[Video walkthrough of the application](https://youtu.be/ui0sGw7zYE4)
+
 Type 'node index' from your terminal or bash window within the source folder to run the program.
 
 You will be provided a series a prompts to answer that will populate the README file. Please read on for some tips to walk through this process:
