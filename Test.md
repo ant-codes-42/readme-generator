@@ -1,1 +1,0 @@
-{"title":"Test","description":"Description\n","install":"Installation\n","usage":"Usage\n","contribution":"Contribution\n","test":"Test\n","license":"mit","githubUsername":"ant-codes-42","emailAdress":"schwab.it@pm.me"}
