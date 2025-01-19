@@ -21,7 +21,7 @@ function formatReadmeData(answers) {
             } else {
                 return ``;
             }
-        }, //value ? `## Table of Contents\n\n- [Installation](#installation)\n- [Usage](#usage)\n- [Contribute](#contribute)\n- [Tests](#tests)\n- [Questions](#questions)\n- [License](#license)\n\n` : '',
+        },
         install: (value) => `## Installation\n\n${value}\n`,
         usage: (value) => `## Usage\n\n${value}\n`,
         contribution: (value) => `## Contribute\n\n${value}\n`,
